@@ -4,12 +4,11 @@
   ],
   "plugins": [
     [
-      "transform-runtime",
+      "component",
       {
-        "helpers": false,
-        "polyfill": false,
-        "regenerator": true,
-        "moduleName": "babel-runtime"
+        "libraryName": "element-ui",
+        "styleLibraryName": "theme-chalk"
       }
-    ]]
+    ]
+  ]
 }

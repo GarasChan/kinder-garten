@@ -5,19 +5,20 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');  //打开浏�
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");  //单独提取css
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");  //压缩css
+// const CopyWebpackPlugin = require('copy-webpack-plugin');  //拷贝文件插件
 
 const DEV = process.env.NODE_ENV === 'development';  //用来判断是否是开发环境
 
 let config = {
     //入口文件
     entry: {
-        app: PATH.BUILD_ENTRY,
+        nest: PATH.NEST_ENTRY,
+        app: PATH.BUILD_ENTRY
     },
     //输出目录
     output: {
         path: PATH.BUILD_PATH,  //打包后的js文件存放的地方
         filename: PATH.BUILD_INDEX,  //打包后的js文件名
-        publicPath: 'dist/'
     },
     module: {
         rules: [
@@ -92,12 +93,13 @@ let config = {
         alias: {
             'vue$': 'vue/dist/vue.esm.js'
         },
-        extensions: ['.js', '.vue', '.css'] //后缀名自动补全
+        extensions: ['.js', '.vue', '.css', '.scss'] //后缀名自动补全
     }
 };
 
 if (DEV) {
     config.mode = 'development';
+    config.output.publicPath = 'dist/';
     //开启cheap-module-eval-source-map属性，调试时可以调试到对应的组件代码里面，方便开发调试
     config.devtool = 'cheap-module-eval-source-map';
     /**
@@ -136,6 +138,7 @@ if (DEV) {
     )
 } else {
     config.mode = 'production';
+    config.output.publicPath = './';
     config.module.rules[4].use.unshift(MiniCssExtractPlugin.loader);
     config.plugins.push(
         new MiniCssExtractPlugin({ filename: "[name].css" }),
@@ -144,7 +147,13 @@ if (DEV) {
             cssProcessor: require('cssnano'), //用于优化\最小化CSS的CSS处理器，默认为cssnano
             cssProcessorOptions: { safe: true, discardComments: { removeAll: true } }, //传递给cssProcessor的选项，默认为{}
             canPrint: true  //一个布尔值，指示插件是否可以将消息打印到控制台，默认为true
-       })
+       }),
+    //    new CopyWebpackPlugin([
+    //         {
+    //             from: PATH.LOGO_PATH_FROM,
+    //             to: PATH.LOGO_PATH_TO
+    //         }
+    //    ])
     )
 }
 

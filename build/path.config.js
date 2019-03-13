@@ -3,6 +3,12 @@ const path = require('path');
 module.exports = {
     //打包入口
     BUILD_ENTRY : path.resolve(__dirname, '../src/index.js'),
+    //粒子特效入口
+    NEST_ENTRY: [
+        path.resolve(__dirname, '../libs/nest/EasePack.min.js'),
+        path.resolve(__dirname, '../libs/nest/TweenLite.min.js'),
+        path.resolve(__dirname, '../libs/nest/Nest.js')
+    ],
     //打包出口
     BUILD_PATH : path.resolve(__dirname, '../dist'),
     //打包js文件名
@@ -14,5 +20,8 @@ module.exports = {
     //静态文件
     STATIC_PATH : path.resolve(__dirname, '../static'),
     //CSS路径
-    CSS_PATH : path.resolve(__dirname, '../css'),
+    CSS_PATH : path.resolve(__dirname, '../src/assets/css'),
+    //logo拷贝路径
+    // LOGO_PATH_FROM : path.resolve(__dirname, '../static/images/logo.png'),
+    // LOGO_PATH_TO : path.resolve(__dirname, './static/images/logo.png')
 }

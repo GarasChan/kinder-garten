@@ -1,19 +1,15 @@
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+  <h1>log</h1>
 </template>
 
 <script>
-
 export default {
-  name: 'app',
-  data () {
-    return { }
+  // name: 'App'
+  data() {
+    return {};
   }
 };
 </script>
 
 <style lang='scss' scoped>
-
 </style>
