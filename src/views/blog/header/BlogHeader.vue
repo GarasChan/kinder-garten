@@ -1,10 +1,10 @@
 <template>
-  <div class="blog-header">
+  <header class="blog-header">
     <div class="logo">
       <img src="../../../../static/images/logo.png" alt="">
       <span>幼稚园</span>
     </div>
-    <div :class="['menu', { 'show': showMenus }]" @click="hideMenus">
+    <nav :class="['menu', { 'show': showMenus }]" @click="hideMenus">
       <ol>
         <router-link to="/" tag="li">首页</router-link>
         <router-link to="/blog/log" tag="li">日志</router-link>
@@ -13,13 +13,12 @@
         <router-link to="/blog/message" tag="li">留言</router-link>
         <router-link to="/about" tag="li">关于</router-link>
       </ol>
-    </div>
+    </nav>
     <div class="tools">
-      <el-tooltip content="Top center" placement="top">
-        <i :class="['kg-icon-qrcode', {'active' : showMenus}]" @click="toggleMenus"></i>
-      </el-tooltip>
+      <i :class="['kg-icon-qrcode mobile', {'active' : showMenus}]" @click="toggleMenus"></i>
+      <i class="kg-icon-remind"></i>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -41,7 +40,6 @@ export default {
       if (e.target.className !== 'menu show') {
         return;
       }
-      console.log(this.showMenus);
       this.showMenus && (this.showMenus = !this.showMenus);
     }
   }
@@ -49,28 +47,42 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@mixin hover_bottom {
+  color: rgba($theme-color, .6) !important;
+  @include getTransition('color', '.2s');
+
+  &::after {
+    width: 100%;
+    @include getTransition('width', '.2s');
+  }
+}
+
 .blog-header {
+  position: fixed;
+  top: 0;
   width: 100%;
-  padding: 0 100px;
-  height: 60px;
+  padding: 10px 50px;
+  height: 64px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2a2a2a;
-  box-shadow: 0px 3px 4px #2a2a2a;
+  @include getAttr('background-color', 'bg_color1');
+  @include getTransition();
 }
 
 .logo {
   display: flex;
   align-items: center;
   img {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
+    @include getTransition();
   }
 
   span {
     margin-left: 16px;
-    font-size: 2em;
+    font-size: 1.6em;
+    @include getTransition();
   }
 }
 
@@ -83,72 +95,90 @@ export default {
     li {
         position: relative;
         width: 65px;
-        line-height: 60px;
+        line-height: 64px;
         list-style: none;
         text-align: center;
-        color: #f9f1e9;
+        @include getAttr();
         cursor: pointer;
-        transition: 0.2s linear color;
+        @include getTransition('color', '.2s');
 
         &::after {
           content: "";
           position: absolute;
           left: 0;
-          top: 56px;
+          bottom: 0;
           width: 0;
           height: 4px;
-          background-color: #616161;
-          transition: 0.2s linear width;
+          background-color: rgba($theme-color, .6);
+          @include getTransition('width', '.2s');
         }
 
         &:hover {
-          color: #566473;
-          transition: 0.2s linear color;
-
-          &::after {
-            width: 100%;
-            transition: 0.2s linear width;
-          }
+          @include hover_bottom
         }
       }
   }  
 
   .exact {
-    color: #566473;
-    transition: 0.2s linear color;
-
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 56px;
-      width: 100%;
-      height: 4px;
-      background-color: #616161;
-      font-weight: 600;
-      color: #566473;
-      transition: 0.2s linear width;
-    }
+    @include hover_bottom;
   }
 }
 
 .tools {
-  display: none;
-  
+  font-size: 1.5em;
+  cursor: pointer;
+
+  i {
+    @include getAttr();
+    cursor: pointer;
+    margin: 0 8px;
+
+    &:hover {
+      font-weight: 600;
+    }
+  }
+
+  .active {
+    font-weight: 400;
+
+    &:hover {
+      font-weight: 600;
+    }   
+  }
+ 
+ .mobile {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 900px) {
   .blog-header {
-    padding: 0 50px;
+    height: 40px;
+    padding: 0 16px;
+    @include getTransition();
+  }
+
+  .logo {
+    img {
+      width: 24px;
+      height: 24px;
+      @include getTransition();
+    }
+
+    span {
+      margin-left: 8px;
+      font-size: 1em;
+      @include getTransition();
+    }
   }
 
   .menu {
     position: absolute;
     width: 0;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 40px);
     left: 0;
-    top: 60px;
-    transition: .2s linear background-color;
+    top: 40px;
+    @include getTransition('background-color');
 
     ol {
       position: absolute;
@@ -157,55 +187,44 @@ export default {
       left: -60vw;
       flex-direction: column;
       justify-content: flex-start;
-      background-color: #2a2a2a;
-      border-top: 1px solid #333;
-      transition: 0.2s linear left;
+      @include getAttr('background-color', 'bg_color1');
+      border-top: 1px solid $overlay-bg-color;
+      padding-top: 8px;
+      font-size: .8em;
+      letter-spacing: .5em;
+      @include getTransition('left', '.2s');
 
       li {
         width: 100%;
+        line-height: 50px;
         
         &:hover {
-          background-color: rgba($color: #333, $alpha: .8);
+          @include getAttr('background-color', 'bg_color2');
         }
       }
     }
 
     .exact {
-      background-color: rgba($color: #333, $alpha: .8);
+      @include getAttr('background-color', 'bg_color2');
     }
 
   }
 
   .tools {
-    display: block;
-    font-size: 1.5em;
-    
-    i {
-      color: #f9f1e9;
-      cursor: pointer;
+    font-size: 1.2em;
 
-      &:hover {
-        font-weight: 600;
-      }
-    }
-
-    .active {
-      font-weight: 400;
-      color: #566473;
-
-      &:hover {
-        font-weight: 600;
-      }   
+    .mobile {
+      display: inline;
     }
   }
 
   .show {
-    width: 100vw;
-    background-color: rgba($color: #000, $alpha: .4);
-    transition: .2s linear background-color;
+    width: 100%;
+    background-color: $overlay-bg-color;
+    @include getTransition('background-color');
     ol {
       left: 0;
-      transition: 0.2s linear left;
+      @include getTransition('left', '.2s');
     }
   }
 }

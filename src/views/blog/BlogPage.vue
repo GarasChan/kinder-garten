@@ -1,7 +1,7 @@
 <template>
   <div>
     <blog-header></blog-header>
-    <router-view></router-view>
+    <router-view class="content"></router-view>
   </div>
 </template>
 
@@ -20,5 +20,15 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-
+.content {
+  position: inherit;
+  padding-top: 70px;
+  @include getTransition('padding-top')
+}
+@media screen and (max-width: 900px) {
+  .content {
+    padding-top: 50px;
+    @include getTransition('padding-top')
+  }
+}
 </style>

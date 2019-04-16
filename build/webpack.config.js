@@ -73,8 +73,12 @@ let config = {
             {
                 test: /\.(css|scss)$/,
                 use: [
-                    'css-loader',
-                    'sass-loader'
+                    { loader: 'css-loader' },
+                    { loader: 'sass-loader' },
+                    { 
+                        loader: 'sass-resources-loader',
+                        options: { resources: [ PATH.MIXIN_SCSS_PATH ]}
+                    }
                 ],
             }
         ]

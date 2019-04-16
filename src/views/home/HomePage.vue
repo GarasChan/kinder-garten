@@ -38,7 +38,7 @@ export default {
 
 <style lang='scss' scoped>
 .home-page {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   min-width: 150px;
   display: flex;
@@ -55,7 +55,6 @@ export default {
 
 .title {
   text-align: center;
-  // color: #f9f1e9;
 
   h1 {
     font-size: 4em;
@@ -82,14 +81,14 @@ export default {
     a {
       padding: 0.3em 0.5em;
       text-decoration: none;
-      color: #566473;
+      @include getAttr();
       border-radius: 4px;
       border: 2px solid transparent;
       font-weight: 600;
 
       &:hover {
-        border: 2px solid #fff;
-        color: #fff;
+        color:  $theme-color;
+        border: 2px solid rgba($theme-color, .6);
       }
     }
   }

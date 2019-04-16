@@ -1,0 +1,70 @@
+@import './theme.scss';
+
+/********************
+       混合器
+********************/
+@mixin getAttr($attr: color, $val: color) {
+  @each $theme-name , $theme in $themes {
+    [theme = '#{$theme-name}'] & {
+      #{$attr}: map-get($theme, $val)
+    }
+  }
+}
+
+@mixin getTransition($attr: all, $duration: .4s, $type: linear) {
+  transition: #{$duration} #{$type} #{$attr}
+}
+
+// // 主背景色
+// @mixin main_bg_color() {
+//   @each $theme-name , $theme in $themes {
+//     [theme = '#{$theme-name}'] & {
+//       background-color: map-get($theme, bg-color)
+//     }
+//   }
+// }
+
+// // 标题栏背景色
+// @mixin header_bg_color() {
+//   @each $theme-name , $theme in $themes {
+//     [theme = '#{$theme-name}'] & {
+//       background-color: map-get($theme, bg-color1)
+//     }
+//   }
+// }
+
+// // 主前景色
+// @mixin main_color() {
+//   @each $theme-name , $theme in $themes {
+//     [theme = '#{$theme-name}'] & {
+//       color: map-get($theme, color)
+//     }
+//   }
+// }
+
+// // 标题菜单前景色
+// @mixin menu_color() {
+//   @each $theme-name , $theme in $themes {
+//     [theme = '#{$theme-name}'] & {
+//       color: map-get($theme, menu-color)
+//     }
+//   }
+// }
+
+// // 标题菜单前景色（hover）
+// @mixin menu_color_hover() {
+//   @each $theme-name , $theme in $themes {
+//     [theme = '#{$theme-name}'] & {
+//       color: map-get($theme, menu-color-hover)
+//     }
+//   }
+// }
+
+// // 标题菜单前景色（border）
+// @mixin menu_border_hover() {
+//   @each $theme-name , $theme in $themes {
+//     [theme = '#{$theme-name}'] & {
+//       border: map-get($theme, menu-border-hover)
+//     }
+//   }
+// }

@@ -1,0 +1,56 @@
+/********************
+     custom
+********************/
+$theme-color: #5298fc;
+$dark-bg-color: #333;
+$light-bg-color: #eee;
+$overlay-bg-color: rgba(#000, .4);
+
+/********************
+     dark theme
+********************/
+$theme-dark: (
+  // 背景色
+  bg_color: $dark-bg-color,
+  bg_color1: lighten($dark-bg-color, 5%),
+  bg_color2: lighten($dark-bg-color, 10%),
+  bg_color3: lighten($dark-bg-color, 15%),
+  bg_color4: lighten($dark-bg-color, 20%),
+  bg_color5: lighten($dark-bg-color, 25%),
+  bg_color6: lighten($dark-bg-color, 30%),
+  bg_color7: lighten($dark-bg-color, 35%),
+  bg_color8: lighten($dark-bg-color, 40%),
+  bg_color9: lighten($dark-bg-color, 45%),
+
+  // 前景色
+  color: #fff
+);
+
+/********************
+     light theme
+********************/
+$theme-light: (
+  // 背景色
+  bg_color: $light-bg-color,
+  bg_color1: darken($light-bg-color, 5%),
+  bg_color2: darken($light-bg-color, 10%),
+  bg_color3: darken($light-bg-color, 15%),
+  bg_color4: darken($light-bg-color, 20%),
+  bg_color5: darken($light-bg-color, 25%),
+  bg_color6: darken($light-bg-color, 30%),
+  bg_color7: darken($light-bg-color, 35%),
+  bg_color8: darken($light-bg-color, 40%),
+  bg_color9: darken($light-bg-color, 45%),
+
+  // 前景色
+  color: #000
+);
+
+/********************
+     映射集合
+********************/
+$themes: (
+  dark: $theme-dark,
+  light: $theme-light
+);
+

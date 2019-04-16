@@ -1,6 +1,6 @@
 @font-face {font-family: "kg-icon";
-  src: url('iconfont/iconfont.eot?t=1551408852151'); /* IE9 */
-  src: url('iconfont/iconfont.eot?t=1551408852151#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  src: url('iconfont/iconfont.eot?t=1551408852151'), /* IE9 */
+  url('iconfont/iconfont.eot?t=1551408852151#iefix') format('embedded-opentype'), /* IE6-IE8 */
   url('iconfont/iconfont.woff2?t=1551408852151') format('woff2'),
   url('iconfont/iconfont.woff?t=1551408852151') format('woff'),
   url('iconfont/iconfont.ttf?t=1551408852151') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
