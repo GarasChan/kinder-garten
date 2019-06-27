@@ -19,16 +19,9 @@ export default {
 };
 </script>
 
-<style lang='scss' scoped>
+<style lang='less' scoped>
 .content {
   position: inherit;
   padding-top: 70px;
-  @include getTransition('padding-top')
-}
-@media screen and (max-width: 900px) {
-  .content {
-    padding-top: 50px;
-    @include getTransition('padding-top')
-  }
 }
 </style>

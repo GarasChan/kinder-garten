@@ -20,7 +20,7 @@ module.exports = {
     //静态文件
     STATIC_PATH: path.resolve(__dirname, '../static'),
     //CSS路径
-    CSS_PATH: path.resolve(__dirname, '../src/assets/css'),
+    STYLE_PATH: path.resolve(__dirname, '../src/assets/style/css'),
     //SCSS路径
     SCSS_PATH: path.resolve(__dirname, '../src/assets/scss'),
     //SCSS混合指令路径

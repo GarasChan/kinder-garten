@@ -18,10 +18,6 @@
 </template>
 
 <script>
-import '../../../libs/nest/EasePack.min.js';
-import '../../../libs/nest/TweenLite.min.js';
-import '../../../libs/nest/Nest.js';
-
 export default {
   // name: 'App'
   data() {
@@ -36,7 +32,8 @@ export default {
 };
 </script>
 
-<style lang='scss' scoped>
+<style lang='less' scoped>
+@import '~@/assets/styles/less/mixin.less';
 .home-page {
   width: 100%;
   height: 100vh;
@@ -45,7 +42,7 @@ export default {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  letter-spacing: 0.1em;
+  letter-spacing: 4px;
 }
 
 #nest-canvas {
@@ -57,11 +54,11 @@ export default {
   text-align: center;
 
   h1 {
-    font-size: 4em;
+    font-size: 76px;
   }
 
   h4 {
-    margin-top: 1em;
+    margin-top: 16px;
   }
 }
 
@@ -75,22 +72,24 @@ export default {
   li {
     width: 60px;
     list-style: none;
-    margin: 1em 0.5em;
+    margin: 0 8px;
     text-align: center;
 
     a {
-      padding: 0.3em 0.5em;
+      padding: 2px 8px;
       text-decoration: none;
-      @include getAttr();
       border-radius: 4px;
       border: 2px solid transparent;
       font-weight: 600;
 
       &:hover {
-        color:  $theme-color;
-        border: 2px solid rgba($theme-color, .6);
+        border: 2px solid @hover-color;
       }
     }
+  }
+
+  .active a {
+    color: @active-color;
   }
 }
 </style>

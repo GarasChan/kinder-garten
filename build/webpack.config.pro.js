@@ -23,27 +23,16 @@ let config = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js)$/,
                 include: PATH.SRC_PATH,
                 exclude: PATH.EXCLUDE_PATH,
-                loader: 'babel-loader'
+                loader: ['babel-loader']
             },
             {
                 test: /\.vue$/,
-                loader: 'vue-loader',
-                options: {
-                    loaders: {
-                        'css': [
-                            'vue-style-loader',
-                            'css-loader'
-                        ],
-                        'scss': [
-                            'vue-style-loader',
-                            'css-loader',
-                            'sass-loader'
-                        ]
-                    }
-                }
+                include: PATH.SRC_PATH,
+                exclude: PATH.EXCLUDE_PATH,
+                loader: 'vue-loader'
             },
             {
                 test: /\.(gif|jpg|jpeg|png|svg)$/,
@@ -53,14 +42,13 @@ let config = {
                     loader: 'url-loader',
                     options: {
                         limit: 10240,
-                        name: '[name].[ext]',
-                        outputPath: 'images'
+                        name: '[path][name].[ext]'
                     }
                 }]
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2)$/,
-                include: PATH.CSS_PATH,
+                include: PATH.STYLE_PATH,
                 exclude: PATH.EXCLUDE_PATH,
                 use: [{
                     loader: 'file-loader',
@@ -71,15 +59,8 @@ let config = {
                 }]
             },
             {
-                test: /\.(css|scss)$/,
-                use: [
-                    { loader: 'css-loader' },
-                    { loader: 'sass-loader' },
-                    { 
-                        loader: 'sass-resources-loader',
-                        options: { resources: [ PATH.MIXIN_SCSS_PATH ]}
-                    }
-                ],
+                test: /\.(css|less)$/,
+                use: [ 'style-loader', 'css-loader', 'less-loader' ],
             }
         ]
     },
@@ -95,9 +76,10 @@ let config = {
     ],
     resolve: {
         alias: {
-            'vue$': 'vue/dist/vue.esm.js'
+            'vue$': 'vue/dist/vue.esm.js',
+            // '@': resolve('src')
         },
-        extensions: ['.js', '.vue', '.css', '.scss'] //后缀名自动补全
+        extensions: ['.js', '.vue', '.css', '.less'] //后缀名自动补全
     }
 };
 
@@ -136,7 +118,7 @@ if (DEV) {
         // }
         
     };
-    config.module.rules[4].use.unshift('vue-style-loader');
+    // config.module.rules[4].use.unshift('vue-style-loader');
     config.plugins.push(
         new OpenBrowserPlugin({ url: 'http://127.0.0.1:4290/index.html' })
     )
