@@ -7,11 +7,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-size: 100%;
     font-style: inherit;
     margin: 0;
-    outline: 0;
     padding: 0;
+    outline: 0;
     vertical-align: baseline;
     box-sizing: border-box;
     color: @font-color;
+    // .font-color(20);
 }
 
 body {
@@ -19,9 +20,11 @@ body {
     height: 100vh;
     font-weight: 400;
     font-size: 14px;
-    // line-height: 1.25;
-    font-family: 'MicroSoft YaHei';
+    font-family: 'Source Sans Pro', 'Hiragino Sans GB', 'Microsoft Yahei', 'SimSun', 'Helvetica', 'Arial', 'Sans-serif', 'monospace';
     background-color: @background-color;
+    // .background-color();
+    overflow: hidden;
+    user-select: none;
 }
 
 [class*="kg-icon"] {

@@ -55,6 +55,7 @@ export default {
 
   h1 {
     font-size: 76px;
+    color: @title-color;
   }
 
   h4 {
@@ -81,6 +82,7 @@ export default {
       border-radius: 4px;
       border: 2px solid transparent;
       font-weight: 600;
+      color: @button-color;
 
       &:hover {
         border: 2px solid @hover-color;

@@ -1,9 +1,22 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from "./router/router";
+import vuescroll from 'vuescroll';
 
 import '@/assets/styles/fonts/iconfont.css';
 import '@/assets/styles/less/global.less';
+
+Vue.use(vuescroll, {
+    // ?????vuescroll?????
+    ops: {
+        bar: {
+            keepShow: true,
+            background: '#fff',
+            opacity: .4
+        }
+    },
+    name: 'vue-scroll'
+});
 
 //绑定
 new Vue({
