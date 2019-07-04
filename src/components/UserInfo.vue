@@ -25,9 +25,7 @@ export default {
     width: 220px;
     // height: 400px;
     border-radius: 4px;
-    box-shadow: 0px 0px 10px @border-shadow-color;
-    // background-color: @background-color-1;
-    // .background-color(5);
+    box-shadow: 0px 0px 10px @shadow-color;
 
     .avator {
         position: relative;
@@ -37,7 +35,6 @@ export default {
         background-repeat: no-repeat;
         background-size: 100% 64px;
         border-radius: 4px;
-        // .background-opacity-color(.7);
         
         img {
             position: absolute;

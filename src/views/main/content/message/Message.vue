@@ -1,5 +1,5 @@
 <template>
-    <h1>tool</h1>
+    <div>message</div>
 </template>
 
 <script>

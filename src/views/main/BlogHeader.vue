@@ -16,10 +16,10 @@
     <nav class="menu">
       <ol>
         <router-link to="/home" tag="li">首页</router-link>
-        <router-link to="/blog/log" tag="li">日志</router-link>
-        <router-link to="/blog/tool" tag="li">工具</router-link>
-        <router-link to="/blog/essay" tag="li">随笔</router-link>
-        <router-link to="/blog/message" tag="li">留言</router-link>
+        <router-link to="/main/log" tag="li">日志</router-link>
+        <router-link to="/main/tool" tag="li">工具</router-link>
+        <router-link to="/main/essay" tag="li">随笔</router-link>
+        <router-link to="/main/message" tag="li">留言</router-link>
         <router-link to="/about" tag="li">关于</router-link>
       </ol>
     </nav>
@@ -49,15 +49,15 @@ export default {
 .blog-header {
   position: fixed;
   width: 100%;
-  height: 48px;
-  line-height: 48px;
+  height: 50px;
+  line-height: 50px;
   top: 0;
   padding: 10px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: @background-color-1;
-  box-shadow: 0px 4px 10px @border-shadow-color;
+  box-shadow: 0px 4px 10px @shadow-color;
 }
 
 .logo {
@@ -94,7 +94,7 @@ export default {
     li {
         position: relative;
         width: 75px;
-        line-height: 48px;
+        line-height: 50px;
         list-style: none;
         text-align: center;
         letter-spacing: 4px;

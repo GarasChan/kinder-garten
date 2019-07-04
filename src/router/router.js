@@ -2,14 +2,14 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 // 引入组件
-import HomePage from '../views/home/HomePage.vue';
-import AboutMe from '../views/about/AboutMe.vue';
-import BlogPage from '../views/blog/BlogPage.vue';
+import HomePage from '../views/home/Home.vue';
+import AboutMe from '../views/about/About.vue';
+import MainPage from '../views/main/Main.vue';
 
-import BlogLog from '../views/blog/content/log/BlogLog.vue';
-import BlogTool from '../views/blog/content/tool/BlogTool.vue';
-import BlogEssay from '../views/blog/content/essay/BlogEssay.vue';
-import BlogMessage from '../views/blog/content/message/BlogMessage.vue';
+import BlogLog from '../views/main/content/log/Log.vue';
+import BlogTool from '../views/main/content/tool/Tool.vue';
+import BlogEssay from '../views/main/content/essay/Essay.vue';
+import BlogMessage from '../views/main/content/message/Message.vue';
 
 // 要告诉 vue 使用 vueRouter
 Vue.use(VueRouter);
@@ -20,23 +20,23 @@ const routes = [
         component: HomePage
     },
     {
-        path: '/blog',
-        component: BlogPage,
+        path: '/mian',
+        component: MainPage,
         children: [
             {
-                path: '/blog/log',
+                path: '/main/log',
                 component: BlogLog,
             },
             {
-                path: '/blog/tool',
+                path: '/main/tool',
                 component: BlogTool
             },
             {
-                path: '/blog/essay',
+                path: '/main/essay',
                 component: BlogEssay
             },
             {
-                path: '/blog/message',
+                path: '/main/message',
                 component: BlogMessage
             },
             {

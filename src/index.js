@@ -12,7 +12,7 @@ Vue.use(vuescroll, {
         bar: {
             keepShow: true,
             background: '#fff',
-            opacity: .4
+            opacity: .2
         }
     },
     name: 'vue-scroll'
