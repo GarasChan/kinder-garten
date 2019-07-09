@@ -2,7 +2,7 @@
     <div :class='["blog-detail", { [className]: className }]'>
         <div class="left">
             <img src="~@/assets/images/blog-detail.png" alt="">
-            <span class="label">日志</span>
+            <span class="label">javascript</span>
         </div>
         <div class="right">
             <h2>GarasChan的个人博客--日志</h2>

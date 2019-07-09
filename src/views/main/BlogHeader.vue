@@ -34,7 +34,7 @@
 export default {
   name: 'blog-header',
 
-  data() {
+  data: function() {
     return {}
   },
 

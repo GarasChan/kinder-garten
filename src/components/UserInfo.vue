@@ -22,7 +22,7 @@ export default {
 <style lang="less" scoped>
 @import '~@/assets/styles/less/mixin.less';
 .user-info {
-    width: 220px;
+    width: 100%;
     // height: 400px;
     border-radius: 4px;
     box-shadow: 0px 0px 10px @shadow-color;
