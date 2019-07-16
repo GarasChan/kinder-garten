@@ -15,7 +15,7 @@ export default {
             time: ''
         }
     },
-    created(){
+    created() {
         timer = setInterval(this.updateTime, 1000);
         this.updateTime();
     },

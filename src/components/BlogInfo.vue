@@ -1,17 +1,18 @@
 <template>
-    <div :class='["blog-detail", { [className]: className }]'>
+    <div class='blog-detail'>
         <div class="left">
             <img src="~@/assets/images/blog-detail.png" alt="">
-            <span class="label">javascript</span>
+            <span class="label">{{data.label}}</span>
         </div>
         <div class="right">
-            <h2>GarasChan的个人博客--日志</h2>
-            <article>GarasChan的sChan的个人博客--内容GarasChsChan的个sChan的个人博客--内容GarasChsChan的个人博客--内容GarasChsChan的个人博客--内容GarasChsChan的个人博客--内容GarasCh人博客--内容GarasCh个人博客--内容GarasChan的个人...</article>
+            <!-- <router-link to="/log" tag="h2" @click="go2detail">{{data.title}}</router-link> -->
+            <h2 @click="go2detail">{{data.title}}</h2>
+            <article>{{data.content}}</article>
             <div class="info">
-                <span class="kg-icon-date date">1996年09月24日</span>
-                <span class="kg-icon-comment comment">3739条</span>
-                <span class="kg-icon-read read">520次</span>
-                <span class="kg-icon-praise praise">1314人</span>
+                <span class="kg-icon-date date">{{data.date}}</span>
+                <span class="kg-icon-comment comment">{{comment}}</span>
+                <span class="kg-icon-read read">{{read}}</span>
+                <span class="kg-icon-praise praise">{{praise}}</span>
                 <a class="view-detail">查看全文</a>
             </div>
         </div>
@@ -20,8 +21,34 @@
 <script>
 export default {
     props: {
-        className: String
-    }
+        data: Object
+    },
+    methods: {
+        go2detail: function(e) {
+            console.log({router: this.$router});
+            console.log({route: this.$route});
+            console.log({e});
+            console.log({this: this});
+            this.$router.push({ path: `/main/log/${this.data.uuid}` })
+        }
+    },
+    computed: {
+        comment: function() {
+            return `${this.data.comment}条`;
+        },
+        read: function() {
+            return `${this.data.read}次`;
+        },
+        praise: function() {
+            return `${this.data.praise}人`;
+        }
+    },
+    data() {
+        return {
+            date: '',
+            time: ''
+        }
+    },
 }
 </script>
 <style lang="less" scoped>
@@ -106,10 +133,10 @@ export default {
             span {
                 margin-right: 16px;
                 color: @tip-color;
-                cursor: pointer;
-                &:hover {
-                    color: @hover-color;
-                }
+                // cursor: pointer;
+                // &:hover {
+                //     color: @hover-color;
+                // }
                 &::before {
                     margin-right: 4px;
                 }
