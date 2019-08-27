@@ -1,19 +1,12 @@
 <template>
   <div>
     <blog-info v-for='(item, index) in datas' :key='index' :data='item'></blog-info>
-    <!-- <blog-info></blog-info>
-    <blog-info></blog-info>
-    <blog-info></blog-info>
-    <blog-info></blog-info>
-    <blog-info></blog-info>
-    <blog-info></blog-info>
-    <blog-info></blog-info> -->
   </div>
 </template>
 
 <script>
 import BlogInfo from "@/components/BlogInfo";
-import sampleData from "@/config/sampleData";
+import { blogs } from "@/config/sampleData";
 
 export default {
   components: {
@@ -21,17 +14,12 @@ export default {
   },
   data() {
     return {
-      datas: sampleData.blogs
+      datas: blogs
     };
   }
 };
 </script>
 
 <style lang='less' scoped>
-.item {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  background-color: "red";
-}
+
 </style>

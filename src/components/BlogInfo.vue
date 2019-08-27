@@ -110,7 +110,8 @@ export default {
         h2 {
             font-weight: normal;
             color: @title-color;
-            font-size: 16px;
+            font-size: 18px;
+            margin: 0;
             flex-shrink: 0;
             cursor: pointer;
 

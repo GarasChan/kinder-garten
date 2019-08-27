@@ -19,7 +19,7 @@
         </div>
       </vue-scroll>
     </div>
-    <div class="tools">
+    <div class="slide-tools">
       <ul class="tool-box">
         <li class="tool"><a class="kg-icon-tools"></a></li>
         <li class="tool"><a class="kg-icon-tools"></a></li>
@@ -144,7 +144,7 @@ export default {
   }
 }
 
-.tools {
+.slide-tools {
   position: absolute;
   right: 64px;
   bottom: 140px;
