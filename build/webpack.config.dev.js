@@ -14,8 +14,8 @@ let config = {
     output: {
         path: resolve('dist'),
         publicPath: './',
-        filename: 'js/[name].[hash:6].js',
-        chunkFilename: 'js/[name].[chunkhash:6].js'
+        filename: 'js/[name].js',
+        chunkFilename: 'js/[name].js'
     },
     devtool: 'cheap-module-eval-source-map',
     module: {
@@ -81,8 +81,8 @@ let config = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash:6].css',
-            chunkFilename: 'css/[name].[contenthash:6].css',
+            filename: 'css/[name].css',
+            chunkFilename: 'css/[name].css',
             ignoreOrder: false, // Enable to remove warnings about conflicting order
         }),
         new CopyWebpackPlugin([

@@ -3,7 +3,7 @@ import App from './App.vue';
 import router from "./router/router";
 import vuescroll from 'vuescroll';
 
-import '@/assets/fonts/iconfont';
+import '@/assets/js/fonts/iconfont';
 import '@/assets/style/global';
 
 Vue.use(vuescroll, {

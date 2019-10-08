@@ -1,8 +1,6 @@
 <template>
     <a class='tool-detail' :title='data.title'>
-        <div class="icon">
-            <i class="kg-icon-date"></i>
-        </div>
+        <icon icon='date' class="icon" />
         <div class="info">
             <h2 class="title">{{data.title}}</h2>
             <p class="desc">{{data.description}}</p>
@@ -10,7 +8,11 @@
     </a>
 </template>
 <script>
+import Icon from '@/components/Icon';
 export default {
+    components: {
+        "icon": Icon
+    },
     props: {
         data: Object
     },

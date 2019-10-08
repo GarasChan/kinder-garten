@@ -23,10 +23,6 @@
         <router-link to="/about" tag="li">关于</router-link>
       </ol>
     </nav>
-    <!-- <div class="tools">
-      <i :class='kg-icon-qrcode'></i>
-      <i class="kg-icon-remind"></i>
-    </div> -->
   </header>
 </template>
 
