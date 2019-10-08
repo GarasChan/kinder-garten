@@ -48,7 +48,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-@import '~@/assets/styles/less/mixin.less';
+@import '~@/assets/style/mixin.less';
 .clock {
     padding: 8px;
     font-family: 'Share Tech Mono', monospace;

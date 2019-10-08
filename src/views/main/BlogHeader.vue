@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style lang='less' scoped>
-@import '~@/assets/styles/less/mixin.less';
+@import '~@/assets/style/mixin.less';
 .blog-header {
   position: fixed;
   width: 100%;

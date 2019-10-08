@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang='less' scoped>
-@import '~@/assets/styles/less/mixin.less';
+@import '~@/assets/style/mixin.less';
 .home-page {
   width: 100%;
   height: 100vh;

@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import '../../assets/js/nest/Nest';
 import BlogHeader from '@/views/main/BlogHeader';
 import BlogFooter from '@/views/main/BlogFooter';
 import UserInfo from '@/components/UserInfo';
@@ -91,7 +92,7 @@ export default {
 </script>
 
 <style lang='less' scoped>
-@import '~@/assets/styles/less/mixin.less';
+@import '~@/assets/style/mixin.less';
 .container {
   position: absolute;
   top: 50px;

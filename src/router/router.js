@@ -24,7 +24,7 @@ const routes = [
     },
     {
         path: '/mian',
-        name: 'main',
+        // name: 'main',
         component: MainPage,
         props: true,
         children: [

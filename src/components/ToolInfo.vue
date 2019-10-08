@@ -28,7 +28,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-@import '~@/assets/styles/less/mixin.less';
+@import '~@/assets/style/mixin.less';
 .tool-detail {
     width: 250px;
     height: 300px;
