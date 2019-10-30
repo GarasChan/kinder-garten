@@ -15,7 +15,7 @@
             </div>
             <!-- <div class='r-slider'></div> -->
           </section>
-          <!-- <blog-footer></blog-footer> -->
+          <blog-footer />
         </div>
       </vue-scroll>
     </div>
@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import '../../assets/js/nest/Nest';
 import BlogHeader from '@/views/main/BlogHeader';
 import BlogFooter from '@/views/main/BlogFooter';
 import UserInfo from '@/components/UserInfo';

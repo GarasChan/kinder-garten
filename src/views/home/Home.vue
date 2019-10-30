@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import '../../assets/js/nest/Nest';
 export default {
   // name: 'App'
   data() {
