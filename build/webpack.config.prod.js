@@ -99,7 +99,7 @@ let config = {
         ]),
         // new BundleAnalyzerPlugin(),
         new HtmlWebpackPlugin({
-            title: 'KinderGarten',
+            title: '技术经验分享',
             template: resolve('index.html'),
             minify: {
                 removeComments: true, // 移除HTML中的注释

@@ -1,5 +1,5 @@
 <template>
-    <div>message</div>
+    <div>留言测试</div>
 </template>
 
 <script>

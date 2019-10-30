@@ -89,7 +89,7 @@ let config = {
             { from: './src/assets/images/logo.png', to: './assets/images' }
         ]),
         new HtmlWebpackPlugin({
-            title: 'KinderGarten',
+            title: '技术经验分享',
             template: resolve('index.html')
         }),
         new OpenBrowserPlugin({ url: 'http://127.0.0.1:4290' }),

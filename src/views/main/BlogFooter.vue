@@ -3,7 +3,7 @@
       <p class="record">
         <a href="http://beian.miit.gov.cn" target="_blank">蜀ICP备19004247号-1</a>
       </p>
-      <p class="copyright">Copyright © 幼稚园. 版权所有</p>
+      <p class="copyright">Copyright © garaschan.online. 版权所有</p>
   </footer>
 </template>
 
