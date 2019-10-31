@@ -2,35 +2,36 @@
   <div>
     <blog-header></blog-header>
     <div class='container'>
-      <vue-scroll ref="mainScroll" :ops='scrollOptions' @handle-scroll='handleScroll' @handle-scroll-complete="scrollComplete">
-        <div class="main">
+      <vue-scroll ref='mainScroll' :ops='scrollOptions' @handle-scroll='handleScroll' @handle-scroll-complete='scrollComplete'>
+        <div class='main'>
           <section>
-            <div class="l-slider">
+            <div class='l-slider'>
               <user-info className='user-fixed'></user-info>
               <clock/>
             </div>
-            <div class="content">
+            <div class='content'>
               <p>当前位置 > 日志</p>
               <router-view></router-view>
             </div>
-            <!-- <div class="r-slider"></div> -->
+            <!-- <div class='r-slider'></div> -->
           </section>
-          <!-- <blog-footer></blog-footer> -->
+          <blog-footer />
         </div>
       </vue-scroll>
     </div>
-    <div class="slide-tools">
-      <ul class="tool-box">
-        <li class="tool"><a class="kg-icon-tools"></a></li>
-        <li class="tool"><a class="kg-icon-tools"></a></li>
-        <li class="tool"><a class="kg-icon-tools"></a></li>
-        <li class="tool"><a class="kg-icon-tools"></a></li>
+    <div class='slide-tools'>
+      <ul class='tool-box'>
+        <li class='tool'><icon icon='tools' /></li>
+        <li class='tool'><icon icon='tools' /></li>
+        <li class='tool'><icon icon='tools' /></li>
+        <li class='tool'><icon icon='tools' /></li>
       </ul>
-      <div class="tool"><a class="kg-icon-tools"></a></div>
+      <div class='tool'><icon icon='tools' /></div>
     </div>
-    <div ref="rocket" class="rocket" v-show="scrollTop" @click="scroll2Top">
-      <a class="kg-icon-top"></a>
-    </div>
+    <icon ref='rocket' icon='top' class='rocket' v-show='scrollTop' @onClick='scroll2Top' />
+    <!-- <div ref='rocket' class='rocket'>
+      
+    </div> -->
   </div>
 </template>
 
@@ -39,13 +40,15 @@ import BlogHeader from '@/views/main/BlogHeader';
 import BlogFooter from '@/views/main/BlogFooter';
 import UserInfo from '@/components/UserInfo';
 import Clock from '@/components/Clock';
+import Icon from '@/components/Icon';
 
 export default {
   components: {
     'blog-header': BlogHeader,
     'blog-footer': BlogFooter,
     'user-info': UserInfo,
-    'clock': Clock
+    'clock': Clock,
+    'icon': Icon
   },
 
   data: function() {
@@ -58,14 +61,8 @@ export default {
       scrollTop: false // 移动到顶部是否可用
     };
   },
-
-  mounted: function () {
-    // let mainHeight = window.innerHeight - 50;
-    // this.$refs.mianContainer.style.height = `${mainHeight}px`;
-  },
   
   methods: {
-
     handleScroll: function(vertical, horizontal, nativeEvent) {
       if (this.isScrolling) {
         return;
@@ -75,23 +72,19 @@ export default {
 
     scrollComplete: function(vertical, horizontal) {
       this.isScrolling = false; // 取消移动到顶部状态
-      this.scrollTop = false;
-      this.$refs.rocket.style.transform = '';
     },
 
     scroll2Top: function() {
       this.isScrolling = true; // 正在移动到顶部过程中
-      this.$refs.mainScroll.scrollTo({ y: 0 }, 1000);
-      let flyHeight = window.innerHeight - 200;
-      this.$refs.rocket.style.transform = `translateY(-${flyHeight}px)`;
+      this.$refs.mainScroll.scrollTo({ y: 0 }, 300);
+      this.scrollTop = false;
     }
-    
   }
 };
 </script>
 
 <style lang='less' scoped>
-@import '~@/assets/styles/less/mixin.less';
+@import '~@/assets/style/mixin.less';
 .container {
   position: absolute;
   top: 50px;
@@ -152,6 +145,10 @@ export default {
   flex-direction: column;
   border-radius: 4px;
 
+  .kg-icon {
+    padding: 8px;
+  }
+
   .tool-box {
     opacity: 0;
     transition: .2s opacity ease-in;
@@ -165,15 +162,6 @@ export default {
     :hover {
       color: @hover-color;
     }
-
-    a {
-      display: inline-block;
-      width: 36px;
-      height: 36px;
-      line-height: 36px;
-      text-align: center;
-      cursor: pointer;
-    }
   }
 
   &:hover {
@@ -186,19 +174,14 @@ export default {
 .rocket {
   position: absolute;
   right: 64px;
-  bottom: 100px;
-  font-size: 36px;
+  bottom: 84px;
+  font-size: 34px;
   cursor: pointer;
-  transition: transform 1s ease-in;
+  transition: color .2s ease-in;
 
-  a {
-    display: block;
-  }
-
-  :hover {
+  &:hover {
     color: @hover-color;
-    transform: scale(1.4);
-    transition: all .4s ease-in;
+    transition: color .2s ease-in;
   }
 }
   

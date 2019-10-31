@@ -24,10 +24,6 @@
         <router-link to="/editor" tag="li">编辑</router-link>
       </ol>
     </nav>
-    <!-- <div class="tools">
-      <i :class='kg-icon-qrcode'></i>
-      <i class="kg-icon-remind"></i>
-    </div> -->
   </header>
 </template>
 
@@ -46,7 +42,7 @@ export default {
 </script>
 
 <style lang='less' scoped>
-@import '~@/assets/styles/less/mixin.less';
+@import '~@/assets/style/mixin.less';
 .blog-header {
   position: fixed;
   width: 100%;
