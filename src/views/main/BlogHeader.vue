@@ -21,6 +21,7 @@
         <router-link to="/main/essay" tag="li">随笔</router-link>
         <router-link to="/main/message" tag="li">留言</router-link>
         <router-link to="/about" tag="li">关于</router-link>
+        <router-link to="/editor" tag="li">编辑</router-link>
       </ol>
     </nav>
     <!-- <div class="tools">

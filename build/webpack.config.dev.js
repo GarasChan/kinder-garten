@@ -49,8 +49,8 @@ let config = {
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2)$/,
-                include: resolve('src/assets/styles/fonts'),
-                exclude: resolve('node_modules'),
+                // include: resolve('src/assets/styles/fonts'),
+                // exclude: resolve('node_modules'),
                 use: [{
                     loader: 'file-loader',
                     options: {
@@ -61,8 +61,8 @@ let config = {
             },
             {
                 test: /\.(css|less)$/,
-                include: resolve('src'),
-                exclude: resolve('node_modules'),
+                // include: resolve('src'),
+                // exclude: resolve('node_modules'),
                 use: [ 
                     'style-loader', 
                     'css-loader', 

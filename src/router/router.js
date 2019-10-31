@@ -3,8 +3,9 @@ import VueRouter from 'vue-router';
 
 // 引入组件
 import HomePage from '@/views/home/Home.vue';
-import AboutMe from '@/views/about/About.vue';
+import AboutPage from '@/views/about/About.vue';
 import MainPage from '@/views/main/Main.vue';
+import EditorPage from '@/views/editor/Editor.vue';
 
 import BlogLog from '@/views/main/content/log/Log.vue';
 import BlogLogArticle from '@/views/main/content/log/LogArticle.vue';
@@ -68,7 +69,13 @@ const routes = [
     {
         path: '/about',
         name: 'about',
-        component: AboutMe,
+        component: AboutPage,
+        props: true
+    },
+    {
+        path: '/editor', 
+        name: 'editor',
+        component: EditorPage,
         props: true
     },
     {
