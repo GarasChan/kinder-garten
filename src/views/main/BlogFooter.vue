@@ -24,15 +24,19 @@ export default {
 <style lang='less' scoped>
 @import '~@/assets/style/mixin.less';
 .blog-footer {
+  // position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  // height: 50px;
+  max-width: 1200px;
+  padding: 8px 24px;
+  margin: 0 auto;
+  left: 0;
   bottom: 0;
   padding: 8px;
-  background-color: #444;
+  border-top: 1px solid hsla(0,0%,100%,.12);
+  background-color: #333;
   // box-shadow: 0px -4px 10px #2b2b2b;
 
   p {

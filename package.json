@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.config.dev.js",
-    "dist": "cross-env NODE_ENV=production webpack --config ./build/webpack.config.pro.js"
+    "dist": "cross-env NODE_ENV=production webpack --config ./build/webpack.config.prod.js"
   },
   "browserslist": [
     "> 1%",
@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "@babel/runtime": "^7.4.5",
+    "ant-design-vue": "^1.4.4",
     "core-js": "^3.2.1",
     "mavon-editor": "^2.7.5",
     "vue": "^2.6.10",

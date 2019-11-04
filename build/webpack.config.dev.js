@@ -13,7 +13,7 @@ let config = {
     },
     output: {
         path: resolve('dist'),
-        publicPath: './',
+        publicPath: '/',
         filename: 'js/[name].js',
         chunkFilename: 'js/[name].js'
     },
@@ -90,7 +90,8 @@ let config = {
             ignoreOrder: false, // Enable to remove warnings about conflicting order
         }),
         new CopyWebpackPlugin([
-            { from: './src/assets/images/logo.png', to: './assets/images' }
+            { from: './src/assets/images/logo.png', to: './assets/images' },
+            { from: './src/assets/libs', to: './assets/libs' }
         ]),
         new HtmlWebpackPlugin({
             title: '技术经验分享',

@@ -32,10 +32,10 @@ export default {
 <style lang="less" scoped>
 @import '~@/assets/style/mixin.less';
 .tool-detail {
-    width: 250px;
-    height: 300px;
-    margin: 4px;
-    padding: 0 24px;
+    display: block;
+    // height: 300px;
+    margin-top: 12px;
+    padding: 48px 24px;
     border-radius: 4px;
     .border();
     cursor: pointer;
@@ -47,8 +47,8 @@ export default {
     }
 
     .icon {
-        height: 120px;
-        line-height: 120px;
+        // height: 120px;
+        // line-height: 120px;
         font-size: 64px;
         opacity: .7;
         i {
@@ -61,11 +61,23 @@ export default {
             font-weight: normal;
             color: @title-color;
             font-size: 18px;
+            line-height: 1.4;
         }
         .desc {
             // color: @tip-color;
         }
     }
+}
+@media (max-width: 768px) {
+  .tool-detail {
+    // height: 120px;
+    padding: 24px;
+    transition: all .2s;
+
+    .info .desc {
+        display: none;
+    }
+  }
 }
 </style>
 

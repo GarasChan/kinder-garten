@@ -25,7 +25,7 @@ let config = {
     },
     output: {
         path: resolve('dist'),
-        publicPath: './',
+        publicPath: '/',
         filename: 'js/[name].[chunkhash:6].js',
         chunkFilename: 'js/[name].[chunkhash:6].js'
     },
@@ -56,7 +56,7 @@ let config = {
             },
             {
                 test: /\.(css|less)$/,
-                exclude: resolve('node_modules'),
+                // exclude: resolve('node_modules'),
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
@@ -95,7 +95,8 @@ let config = {
         }),
         new OptimizeCSSAssetsPlugin(),
         new CopyWebpackPlugin([
-            { from: './src/assets/images/logo.png', to: './assets/images' }
+            { from: './src/assets/images/logo.png', to: './assets/images' },
+            { from: './src/assets/libs', to: './assets/libs' }
         ]),
         // new BundleAnalyzerPlugin(),
         new HtmlWebpackPlugin({

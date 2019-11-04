@@ -67,7 +67,8 @@ export default {
   justify-content: space-between;
   border-radius: 2px;
   .border();
-  transition: transform 0.2s ease-in, box-shadow 0.2s ease-in;
+  // transition: transform 0.2s ease-in, box-shadow 0.2s ease-in;
+  transition: all .2s;
 
   &:hover {
     transform: translateY(-4px);
@@ -110,6 +111,7 @@ export default {
     border-radius: 4px;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 
     h2 {
       font-weight: normal;
@@ -124,11 +126,14 @@ export default {
       }
     }
     article {
+      overflow: hidden;
+      height: auto;
       flex-grow: 1;
       margin: 10px 0;
       line-height: 24px;
       letter-spacing: 0.8px;
       padding-left: 4px;
+      transition: all .2s;
     }
     .info {
       height: 24px;
@@ -146,6 +151,9 @@ export default {
           margin-right: 4px;
         }
       }
+    }
+    .data {
+      white-space: nowrap;
     }
   }
 
@@ -173,6 +181,32 @@ export default {
     &:hover {
       color: @hover-color;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-detail .right .comment,
+  .blog-detail .right .read,
+  .blog-detail .right .praise {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .blog-detail {
+    height: 120px;
+    transition: all .2s;
+  }
+  .blog-detail .view-detail {
+    display: none !important;
+  }
+  .blog-detail .left {
+    width: 100px;
+  }
+  .blog-detail .right article {
+    height: 0;
+    flex-grow: 0;
+    transition: all .2s;
   }
 }
 </style>

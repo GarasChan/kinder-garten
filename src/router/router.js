@@ -2,20 +2,11 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 // 引入组件
-import HomePage from '@/views/home/Home.vue';
-import AboutPage from '@/views/about/About.vue';
-import MainPage from '@/views/main/Main.vue';
-import EditorPage from '@/views/editor/Editor.vue';
-
-// import BlogLog from '@/views/main/content/log/Log.vue';
-// import BlogLogArticle from '@/views/main/content/log/LogArticle.vue';
-// import BlogTool from '@/views/main/content/tool/Tool.vue';
-// import BlogEssay from '@/views/main/content/essay/Essay.vue';
-// import BlogMessage from '@/views/main/content/message/Message.vue';
-
 const HomePage = () => import(/* webpackChunkName:'HomePage' */ '@/views/home/Home.vue');
-const AboutMe = () => import(/* webpackChunkName:'AboutMe' */ '@/views/about/About.vue');
+const AboutPage = () => import(/* webpackChunkName:'AboutPage' */ '@/views/about/About.vue');
 const MainPage = () => import(/* webpackChunkName:'MainPage' */ '@/views/main/Main.vue');
+const EditorPage = () => import(/* webpackChunkName:'EditorPage' */ '@/views/editor/Editor.vue');
+const NullPage = () => import(/* webpackChunkName:'HomePage' */ '@/views/404/Null.vue');
 
 const BlogLog = () => import(/* webpackChunkName:'BlogLog' */ '@/views/main/content/log/Log.vue');
 const BlogLogArticle = () => import(/* webpackChunkName:'BlogLogArticle' */ '@/views/main/content/log/LogArticle.vue');
@@ -28,7 +19,7 @@ Vue.use(VueRouter);
 
 const routes = [
     {
-        path: '/home',
+        path: '/',
         name: 'home',
         component: HomePage,
         props: true
@@ -88,17 +79,28 @@ const routes = [
         component: EditorPage,
         props: true
     },
-    {
-        path: '/', 
-        redirect: '/home',
-        props: true
+    // {
+    //     path: '/', 
+    //     redirect: '/home',
+    //     props: true
+    // },
+    { 
+        path: '*', 
+        component: NullPage 
     }
 ]
 
 var router =  new VueRouter({
-    // mode: 'history',
+    mode: 'history',
     linkActiveClass: 'active',
     linkExactActiveClass: 'exact',
-    routes
+    routes,
+    scrollBehavior: function(to, from, savedPosition) {
+        if (savedPosition) {
+          return savedPosition
+        } else {
+          return { x: 0, y: 0 }
+        }
+    }
 })
 export default router;

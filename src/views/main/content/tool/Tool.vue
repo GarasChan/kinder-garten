@@ -1,7 +1,9 @@
 <template>
-    <div class="tools">
-      <tool-info v-for='(item, index) in datas' :key='index' :data='item'></tool-info>
-    </div>
+    <a-row :gutter=12 class="tools">
+      <a-col  :md=6 :sm=8 :xs=12 class='tool' v-for='(item, index) in datas' :key='index'>
+        <tool-info :data='item'></tool-info>
+      </a-col>
+    </a-row>
 </template>
 
 <script>
@@ -21,10 +23,10 @@ export default {
 </script>
 
 <style lang='less' scoped>
-  .tools {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+  .row .tool {
+    margin-top: 16px;
+  }
+  .col-xxs-12 {
+    // width: 100%;
   }
 </style>

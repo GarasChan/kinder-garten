@@ -1,37 +1,33 @@
 <template>
-  <div>
+  <div style='position: absolute; width: 100vw; height: 100vh'>
     <blog-header></blog-header>
-    <div class='container'>
-      <vue-scroll ref='mainScroll' :ops='scrollOptions' @handle-scroll='handleScroll' @handle-scroll-complete='scrollComplete'>
-        <div class='main'>
-          <section>
-            <div class='l-slider'>
-              <user-info className='user-fixed'></user-info>
-              <clock/>
-            </div>
-            <div class='content'>
-              <p>当前位置 > 日志</p>
-              <router-view></router-view>
-            </div>
-            <!-- <div class='r-slider'></div> -->
-          </section>
-          <blog-footer />
-        </div>
-      </vue-scroll>
-    </div>
+    <section class='container'>
+      <!-- 左悬浮窗 -->
+      <!-- <div class='l-slider'>
+        <user-info className='user-fixed'></user-info>
+        <clock/>
+      </div> -->
+      <!-- 中间内容 -->
+      <div class='c-content'>
+        <p>当前位置 > 日志</p>
+        <router-view></router-view>
+      </div>
+      <!-- 右悬浮窗 -->
+      <!-- <div class='r-slider'>
+        <user-info className='user-fixed'></user-info>
+        <clock/>
+      </div> -->
+    </section>
+    <blog-footer />
     <div class='slide-tools'>
       <ul class='tool-box'>
-        <li class='tool'><icon icon='tools' /></li>
-        <li class='tool'><icon icon='tools' /></li>
-        <li class='tool'><icon icon='tools' /></li>
-        <li class='tool'><icon icon='tools' /></li>
+          <li class='tool'><icon icon='tools' /></li>
+          <li class='tool'><icon icon='tools' /></li>
+          <li class='tool'><icon icon='tools' /></li>
+          <li class='tool'><icon icon='tools' /></li>
       </ul>
-      <div class='tool'><icon icon='tools' /></div>
+      <icon icon='top' class='rocket' v-show='isBelow' @onClick='scrollToTop' />
     </div>
-    <icon ref='rocket' icon='top' class='rocket' v-show='scrollTop' @onClick='scroll2Top' />
-    <!-- <div ref='rocket' class='rocket'>
-      
-    </div> -->
   </div>
 </template>
 
@@ -58,26 +54,25 @@ export default {
         //    sizeStrategy: 'number'
         // }
       },
-      scrollTop: false // 移动到顶部是否可用
+      isBelow: false // 移动到顶部是否可用
     };
   },
   
   methods: {
-    handleScroll: function(vertical, horizontal, nativeEvent) {
-      if (this.isScrolling) {
-        return;
-      }
-      this.scrollTop = vertical.scrollTop > 200;
+    handleScroll: function(e) {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      this.isBelow = scrollTop > 200;
     },
 
-    scrollComplete: function(vertical, horizontal) {
-      this.isScrolling = false; // 取消移动到顶部状态
-    },
+    scrollToTop: function() {
+      window.scrollTo(0, 0);
+    }
+  },
 
-    scroll2Top: function() {
-      this.isScrolling = true; // 正在移动到顶部过程中
-      this.$refs.mainScroll.scrollTo({ y: 0 }, 300);
-      this.scrollTop = false;
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+    if (['log', 'tool'].includes(this.$route.name)) {
+      
     }
   }
 };
@@ -86,103 +81,140 @@ export default {
 <style lang='less' scoped>
 @import '~@/assets/style/mixin.less';
 .container {
-  position: absolute;
-  top: 50px;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  max-width: 1200px;
+  min-height: calc(100% - 64px - 72px);
+  padding: 24px;
+  margin: 64px auto 0;
+  z-index: 1;
 
   .main {
-    height: 100%;
-    padding-top: 8px;
+    margin-bottom: 72px;
+    // min-height: calc(100% - 72px);
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+  }
 
-    & > section {
-      display: flex;
-      flex-direction: row;
-      height: 100%;
-    }
+  .l-slider {
+    margin-right: 24px;
+  }
 
-    .content {
-      width: 800px;
-      padding: 8px;
-      // box-shadow: 0px 0px 10px @shadow-color;
-
-      & > p {
-        padding: 4px;
-        .background-opacity-color(.1);
-      }
-
-      & > div {
-        margin: 8px 0;
-      }
-    }
-
-    .l-slider {
-      width: 200px;
-      margin-right: 16px;
-
-      & > div:not(:first-child) {
-        margin-top: 16px;
-      }
-    }
-
-    .r-slider {
-      width: 200px;
-      margin-left: 16px;
-    }
-    
+  .r-slider {
+    margin-left: 24px;
   }
 }
 
+// .container {
+//   // position: absolute;
+//   // top: 50px;
+//   // bottom: 0;
+//   // left: 0;
+//   // right: 0;
+//   height: calc(100vh - 50px);
+//   top: 50px;
+
+//   .main {
+//     height: calc(100vh - 50px);
+//     padding-top: 8px;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+
+//     & > section {
+//       display: flex;
+//       flex-direction: row;
+//       height: 100%;
+//     }
+
+//     .content {
+//       width: 800px;
+//       padding: 8px;
+//       // box-shadow: 0px 0px 10px @shadow-color;
+
+//       & > p {
+//         padding: 4px;
+//         .background-opacity-color(.1);
+//       }
+
+//       & > div {
+//         margin: 8px 0;
+//       }
+//     }
+
+//     .l-slider {
+//       width: 200px;
+//       margin-right: 16px;
+
+//       & > div:not(:first-child) {
+//         margin-top: 16px;
+//       }
+//     }
+
+//     .r-slider {
+//       width: 200px;
+//       margin-left: 16px;
+//     }
+    
+//   }
+// }
+
 .slide-tools {
-  position: absolute;
-  right: 64px;
-  bottom: 140px;
+  position: fixed;
+  right: 24px;
+  bottom: 100px;
   display: flex;
   flex-direction: column;
-  border-radius: 4px;
+  align-items: center;
 
   .kg-icon {
     padding: 8px;
+    transition: color .2s ease-in;
+    cursor: pointer;
   }
 
   .tool-box {
-    opacity: 0;
-    transition: .2s opacity ease-in;
+    width: 34px;
+    border-radius: 4px;
+    background-color: #2b2b2b;
   }
 
   .tool {
-    .border();
-    margin-top: 4px;
-    border-radius: 4px;
-
-    :hover {
-      color: @hover-color;
-    }
+    text-align: center;
   }
 
-  &:hover {
-    .tool-box {
-      opacity: 1;
-    }
+  .tool:not(:last-child):after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 1px;
+    background-color: hsla(0, 0%, 100%, 0.12);
+    left: 20%;
+    margin-top: 32px;
   }
-}
 
-.rocket {
-  position: absolute;
-  right: 64px;
-  bottom: 84px;
-  font-size: 34px;
-  cursor: pointer;
-  transition: color .2s ease-in;
+  .rocket {
+    position: absolute;
+    bottom: -50px;
+    font-size: 34px;
+  }
 
-  &:hover {
+  .tool:hover .kg-icon, .rocket:hover {
     color: @hover-color;
     transition: color .2s ease-in;
   }
 }
+
+@media (max-width: 992px) {
+  .l-slider, .r-slider {
+    display: none;
+  }
+}
   
+@media (max-width: 568px) {
+  .container {
+    padding: 24px 8px;
+    margin: 40px auto 0;
+    min-height: calc(100% - 40px - 72px);
+  }
+}
+
 </style>

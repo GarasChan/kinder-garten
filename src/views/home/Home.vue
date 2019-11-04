@@ -10,15 +10,15 @@
       <router-link to="/" tag="li"><a>首页</a></router-link>
       <router-link to="/main/log" tag="li"><a>日志</a></router-link>
       <router-link to="/main/tool" tag="li"><a>工具</a></router-link>
-      <router-link to="/main/essay" tag="li"><a>随笔</a></router-link>
-      <router-link to="/main/message" tag="li"><a>留言</a></router-link>
-      <router-link to="/main/about" tag="li"><a>关于</a></router-link>
+      <!-- <router-link to="/main/essay" tag="li"><a>随笔</a></router-link>
+      <router-link to="/main/message" tag="li"><a>留言</a></router-link> -->
+      <!-- <router-link to="/main/about" tag="li"><a>关于</a></router-link> -->
     </ol>
   </div>
 </template>
 
 <script>
-import '../../assets/js/nest/Nest';
+// import '../../assets/js/nest/Nest';
 export default {
   // name: 'App'
   data() {
@@ -28,7 +28,7 @@ export default {
   },
 
   mounted () {
-    new Nest().init();
+    // new Nest().init();
   },
 };
 </script>
