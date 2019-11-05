@@ -81,9 +81,7 @@ export default {
 @import '~@/assets/style/mixin.less';
 @headerHeight: 64px;
 .blog-header {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100vw;
   height: @headerHeight;
   // line-height: @headerHeight;
@@ -93,7 +91,7 @@ export default {
   align-items: center;
   background-color: @background-color-1;
   box-shadow: 0px 4px 10px @shadow-color;
-  z-index: 1;
+  z-index: 30;
 }
 
 .mark {

@@ -95,12 +95,12 @@ var router =  new VueRouter({
     linkActiveClass: 'active',
     linkExactActiveClass: 'exact',
     routes,
-    scrollBehavior: function(to, from, savedPosition) {
-        if (savedPosition) {
-          return savedPosition
-        } else {
-          return { x: 0, y: 0 }
-        }
-    }
+    // scrollBehavior: function(to, from, savedPosition) {
+    //     if (savedPosition) {
+    //       return savedPosition;
+    //     } else {
+    //       return { x: 0, y: 0 };
+    //     }
+    // }
 })
 export default router;

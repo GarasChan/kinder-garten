@@ -1,33 +1,38 @@
 <template>
-  <div style='position: absolute; width: 100vw; height: 100vh'>
+  <div style='width: 100vw; height: 100vh'>
     <blog-header></blog-header>
-    <section class='container'>
-      <!-- 左悬浮窗 -->
-      <!-- <div class='l-slider'>
-        <user-info className='user-fixed'></user-info>
-        <clock/>
-      </div> -->
-      <!-- 中间内容 -->
-      <div class='c-content'>
-        <p>当前位置 > 日志</p>
-        <router-view></router-view>
+    <vue-scroll ref="mainScroll" class="container-wrap" @handle-scroll='handleScroll'>
+      <div class="container">
+        <section class='content'>
+            <!-- 左悬浮窗 -->
+            <!-- <div class='l-slider'>
+              <user-info className='user-fixed'></user-info>
+              <clock/>
+            </div> -->
+            <!-- 中间内容 -->
+            <div class='c-content'>
+              <p>当前位置 > 日志</p>
+              <router-view></router-view>
+            </div>
+            <!-- 右悬浮窗 -->
+            <!-- <div class='r-slider'>
+              <user-info className='user-fixed'></user-info>
+              <clock/>
+            </div> -->
+          
+        </section>
+        <blog-footer />
       </div>
-      <!-- 右悬浮窗 -->
-      <!-- <div class='r-slider'>
-        <user-info className='user-fixed'></user-info>
-        <clock/>
-      </div> -->
-    </section>
-    <blog-footer />
+    </vue-scroll>
     <div class='slide-tools'>
-      <ul class='tool-box'>
-          <li class='tool'><icon icon='tools' /></li>
-          <li class='tool'><icon icon='tools' /></li>
-          <li class='tool'><icon icon='tools' /></li>
-          <li class='tool'><icon icon='tools' /></li>
-      </ul>
-      <icon icon='top' class='rocket' v-show='isBelow' @onClick='scrollToTop' />
-    </div>
+        <ul class='tool-box'>
+            <li class='tool'><icon icon='tools' /></li>
+            <li class='tool'><icon icon='tools' /></li>
+            <li class='tool'><icon icon='tools' /></li>
+            <li class='tool'><icon icon='tools' /></li>
+        </ul>
+        <icon icon='top' class='rocket' v-show='isBelow' @onClick='scrollToTop' />
+      </div>
   </div>
 </template>
 
@@ -49,23 +54,17 @@ export default {
 
   data: function() {
     return {
-      scrollOptions: {
-        // vuescroll: {
-        //    sizeStrategy: 'number'
-        // }
-      },
       isBelow: false // 移动到顶部是否可用
     };
   },
   
   methods: {
-    handleScroll: function(e) {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-      this.isBelow = scrollTop > 200;
+    handleScroll: function(vertical, horizontal, nativeEvent) {
+      this.isBelow = vertical.scrollTop > 200;
     },
 
     scrollToTop: function() {
-      window.scrollTo(0, 0);
+      this.$refs.mainScroll.scrollTo({ y: 0 }, 500);
     }
   },
 
@@ -74,18 +73,28 @@ export default {
     if (['log', 'tool'].includes(this.$route.name)) {
       
     }
-  }
+  },
 };
 </script>
 
 <style lang='less' scoped>
 @import '~@/assets/style/mixin.less';
+.container-wrap {
+  // top: 64px !important;
+  height: calc(100% - 64px) !important;
+  z-index: 10;
+}
 .container {
+  position: absolute;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.content {
   max-width: 1200px;
-  min-height: calc(100% - 64px - 72px);
   padding: 24px;
-  margin: 64px auto 0;
-  z-index: 1;
+  flex-grow: 1;
 
   .main {
     margin-bottom: 72px;
@@ -164,6 +173,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 20;
 
   .kg-icon {
     padding: 8px;
@@ -210,10 +220,9 @@ export default {
 }
   
 @media (max-width: 568px) {
-  .container {
-    padding: 24px 8px;
-    margin: 40px auto 0;
-    min-height: calc(100% - 40px - 72px);
+  .container-wrap {
+    // top: 40px !important;
+    height: calc(100% - 40px) !important;
   }
 }
 
